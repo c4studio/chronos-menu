@@ -1,0 +1,20 @@
+{
+  "name": "c4studio/chronos-menu",
+  "description": "Chronos CMS - Companion menu builder package",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "C4studio",
+      "email": "office@c4studio.ro"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.4",
+    "c4studio/chronos": "^2.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Chronos\\": "src/Chronos/Menu"
+    }
+  }
+}

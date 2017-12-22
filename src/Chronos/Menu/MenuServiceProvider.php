@@ -56,7 +56,7 @@ class MenuServiceProvider extends ServiceProvider {
     {
         // default package configuration
         $this->mergeConfigFrom(
-            __DIR__ . '/config/menu.php', 'menu'
+            __DIR__ . '/config/defaults.php', 'menu'
         );
     }
 

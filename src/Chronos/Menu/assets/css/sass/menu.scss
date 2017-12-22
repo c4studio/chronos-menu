@@ -3,3 +3,254 @@
 @import "mixins";
 
 
+/*
+ * MENU EDITOR
+ */
+#menu-editor-wrapper {
+    .menu-title {
+        font-size: 0;
+        margin-bottom: 30px;
+
+        h2 {
+            display: inline-block;
+            font-size: 16px;
+            line-height: 1;
+            margin-right: 10px;
+            text-transform: uppercase;
+
+            em {
+                color: #9bafb6;
+            }
+
+            &.has-error {
+                em {
+                    color: #eb9ea5;
+                }
+            }
+        }
+
+        .form-control {
+            display: inline-block;
+            margin: -5px 10px 6px 0;
+            width: 300px;
+        }
+
+        .rename-cancel,
+        .rename-confirm {
+            height: 30px;
+            line-height: 30px;
+            margin-top: -5px;
+            min-width: 0;
+            padding: 0;
+            vertical-align: top;
+            width: 30px;
+        }
+
+        .rename-confirm {
+            margin-right: 5px;
+        }
+
+        .rename-menu {
+            font-size: 12px;
+            line-height: 16px;
+            margin-right: 10px;
+        }
+
+        .delete-menu {
+            color: #e2747e;
+            font-size: 12px;
+            line-height: 16px;
+            margin-right: 10px;
+
+            &:hover {
+                color: #d94a57;
+            }
+        }
+    }
+
+    .menu-item {
+        background-color: $gray-lighter;
+        border: 1px solid $gray-light;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        padding: 5px;
+        position: relative;
+
+        &:after {
+            clear: both;
+            content: '';
+            display: block;
+        }
+
+        &.dragged {
+            @include opacity(.5);
+        }
+
+        &.dragover {
+            & + .menu-item-list {
+                margin-bottom: 70px;
+
+                &:after {
+                    border: 1px $gray-dark dashed;
+                    content: '';
+                    display: block;
+                    height: 40px;
+                    left: -30px;
+                    margin-bottom: 10px;
+                    position: absolute;
+                    width: calc(100% + 30px);
+                }
+            }
+
+            &.indent {
+                & + .menu-item-list:after {
+                    left: 0;
+                    width: 100%;
+                }
+            }
+        }
+
+        &.dragged.dragover {
+            margin-bottom: 0;
+
+            &:before {
+                content: none;
+            }
+        }
+
+        &.minimized {
+            padding-bottom: 0;
+
+            & > * {
+                display: none;
+            }
+
+            & > .reorder {
+                display: block;
+                height: 33px;
+            }
+
+            & > .minimize:before {
+                content: '\e1c4';
+            }
+        }
+
+        & > .reorder {
+            cursor: default;
+            display: block;
+            float: left;
+            font-size: 20px;
+            height: 45px;
+            line-height: 1;
+
+            .drag {
+                color: $gray;
+                display: inline;
+
+                &:before {
+                    content: 'a';
+                    cursor: move;
+                    display: inline;
+                    font-family: "icon" !important;
+                    font-size: 28px;
+                    margin-right: 10px;
+                    vertical-align: -6px;
+                }
+
+                &:hover {
+                    color: $brand-secondary;
+                }
+            }
+
+            em {
+                color: $gray;
+            }
+
+            &.has-error em {
+                color: lighten($brand-danger, 10%);
+            }
+        }
+
+        & > .delete {
+            color: lighten($brand-danger, 10%);
+            cursor: pointer;
+            display: block;
+            float: right;
+            line-height: 1;
+
+            &:before {
+                content: '\e1c1';
+                display: block;
+                font-family: "icon" !important;
+                font-size: 20px;
+                margin-top: 4px;
+            }
+
+            &:hover {
+                color: lighten($brand-danger, 10%);
+                text-decoration: none;
+            }
+
+            & + .row {
+                clear: both;
+            }
+        }
+
+        & > .minimize,
+        & > .maximize {
+            color: $gray;
+            cursor: pointer;
+            display: block;
+            float: right;
+            line-height: 1;
+            margin-left: 5px;
+
+            &:before {
+                content: '\e1c4';
+                display: block;
+                font-family: "icon" !important;
+                font-size: 20px;
+                margin-top: 4px;
+            }
+
+            &:hover {
+                color: $brand-secondary;
+                text-decoration: none;
+            }
+        }
+
+        & > .maximize {
+            &:before {
+                content: '\e1d1';
+            }
+        }
+
+        .form-control {
+            background-color: #ffffff;
+        }
+
+        .menu-item-actions {
+            border-top: 1px solid $gray-light;
+            margin: 0 -5px;
+            padding: 15px 15px 10px;
+            text-align: right;
+        }
+    }
+
+    .menu-item-list {
+        padding: 0;
+        position: relative;
+
+        li {
+            display: block;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            ul {
+                margin-left: 30px;
+            }
+        }
+    }
+}
